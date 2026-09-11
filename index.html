@@ -1,11 +1,194 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Digital-id</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Pratap Dhakad</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,380;9..144,560&family=Inter:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#14140f;
+    --ivory:#f2ece0;
+    --marigold:#e2a03f;
+    --moss:#7c8567;
+    --line: rgba(242,236,224,0.14);
+  }
+
+  *{ margin:0; padding:0; box-sizing:border-box; }
+
+  html,body{
+    height:100%;
+    background:var(--ink);
+    color:var(--ivory);
+    font-family:'Inter', sans-serif;
+    overflow-x:hidden;
+  }
+
+  @media (prefers-reduced-motion: reduce){
+    *{ animation-duration:0.01ms !important; animation-iteration-count:1 !important; transition-duration:0.01ms !important; }
+  }
+
+  .grain{
+    position:fixed; inset:0; pointer-events:none; opacity:0.05; z-index:5; mix-blend-mode:overlay;
+  }
+
+  .hero{
+    position:relative;
+    min-height:100vh;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    padding: 8vh 7vw;
+  }
+
+  .role{
+    font-size: 0.85rem;
+    letter-spacing: 0.02em;
+    color: var(--moss);
+    font-weight:500;
+    opacity:0;
+    animation: rise 0.8s cubic-bezier(.2,.7,.2,1) forwards;
+    animation-delay: 1.15s;
+  }
+
+  .name{
+    font-family:'Fraunces', serif;
+    font-weight:380;
+    line-height:0.92;
+    letter-spacing:-0.01em;
+    font-size: clamp(3.2rem, 12vw, 9.5rem);
+    margin: 0.3em 0 0.25em -0.02em;
+  }
+
+  .name .row{
+    display:block;
+    overflow:hidden;
+  }
+
+  .name .row span{
+    display:inline-block;
+    transform: translateY(105%);
+    animation: reveal 1.05s cubic-bezier(.16,.9,.2,1) forwards;
+  }
+
+  .name .row:nth-child(1) span{ animation-delay: 0.05s; }
+  .name .row:nth-child(2) span{ animation-delay: 0.22s; color: var(--marigold); font-style: italic; font-weight:300; }
+
+  @keyframes reveal{
+    to{ transform: translateY(0); }
+  }
+  @keyframes rise{
+    from{ opacity:0; transform: translateY(8px); }
+    to{ opacity:1; transform: translateY(0); }
+  }
+
+  .rule{
+    width:0%;
+    height:1px;
+    background: var(--line);
+    margin: 1.4rem 0 1.6rem 0;
+    animation: grow 1.1s cubic-bezier(.2,.7,.2,1) forwards;
+    animation-delay: 1.3s;
+  }
+  @keyframes grow{ to{ width:100%; } }
+
+  .tagline{
+    max-width: 46ch;
+    font-size: clamp(1rem, 1.6vw, 1.18rem);
+    line-height:1.6;
+    color: rgba(242,236,224,0.82);
+    opacity:0;
+    animation: rise 0.9s cubic-bezier(.2,.7,.2,1) forwards;
+    animation-delay: 1.45s;
+  }
+
+  .tagline em{
+    color: var(--ivory);
+    font-style:normal;
+    border-bottom: 1px solid var(--marigold);
+  }
+
+  .footer{
+    display:flex;
+    justify-content:space-between;
+    align-items:flex-end;
+    margin-top: 3.2rem;
+    opacity:0;
+    animation: rise 0.9s cubic-bezier(.2,.7,.2,1) forwards;
+    animation-delay: 1.65s;
+  }
+
+  .links{
+    display:flex;
+    gap:1.8rem;
+  }
+
+  .links a{
+    color: var(--ivory);
+    text-decoration:none;
+    font-size:0.92rem;
+    position:relative;
+    padding-bottom:2px;
+  }
+  .links a::after{
+    content:"";
+    position:absolute;
+    left:0; bottom:0;
+    width:100%; height:1px;
+    background: var(--marigold);
+    transform: scaleX(0);
+    transform-origin:left;
+    transition: transform 0.35s cubic-bezier(.2,.7,.2,1);
+  }
+  .links a:hover::after{ transform: scaleX(1); }
+  .links a:focus-visible{ outline:2px solid var(--marigold); outline-offset:4px; }
+
+  .mark{
+    font-family:'Fraunces', serif;
+    font-size:0.95rem;
+    color: var(--moss);
+    letter-spacing:0.02em;
+  }
+
+  @media (max-width: 640px){
+    .footer{ flex-direction:column; align-items:flex-start; gap:1.2rem; }
+  }
+</style>
 </head>
 <body>
-    Pratap dhakad
+
+<svg class="grain" xmlns="http://www.w3.org/2000/svg">
+  <filter id="n"><feTurbulence type="fractalNoise" baseFrequency="0.85" numOctaves="2" stitchTiles="stitch"/></filter>
+  <rect width="100%" height="100%" filter="url(#n)"/>
+</svg>
+
+<section class="hero">
+
+  <p class="role">Jetking, Gwalior</p>
+
+  <h1 class="name">
+    <span class="row"><span>Pratap</span></span>
+    <span class="row"><span>Dhakad</span></span>
+  </h1>
+
+  <div class="rule"></div>
+
+  <p class="tagline">
+    Spending most of my time where good engineering meets good judgment.
+  </p>
+
+  <div class="footer">
+    <nav class="links">
+      <a href="#work">Work</a>
+      <a href="#about">About</a>
+      <a href="mailto:hello@pratapdhakad.com">Contact</a>
+    </nav>
+    <span class="mark">PD — 2026</span>
+  </div>
+
+</section>
+
 </body>
 </html>
